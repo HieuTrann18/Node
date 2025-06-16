@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS product (
     Quantity INT NOT NULL
 );
 
--- (Tuỳ chọn) Thêm một vài dữ liệu mẫu
+
 INSERT INTO product (Title, Price, IDate, Quantity) VALUES
 ('Laptop Dell', 1500.00, '2025-06-15', 10),
 ('iPhone 14', 999.99, '2025-06-14', 5),
