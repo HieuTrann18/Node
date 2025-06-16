@@ -34,7 +34,45 @@ app.post('/api/product', async (req, res) => {
   } catch (err) {
     res.status(500).json({message: 'error', err})
   }
+});
 
+app.put('/api/product/:id', async (req, res) => {
+  const { id } = req.params;
+  const { title, price, idate, quantity } = req.body;
+  if (!title || !price || !idate || !quantity) {
+    return res.status(400).json({ message: 'Missing required fields' });
+  }
+  try {
+    const [result] = await connection.query(
+      'UPDATE product SET Title = ?, Price = ?, IDate = ?, Quantity = ? WHERE id = ?',
+      [title, price, idate, quantity, id]
+    );
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ message: 'Product not found' });
+    }
+    res.json({ message: 'Product updated successfully' });
+  } catch (err) {
+    res.status(500).json({ message: 'Update failed', err });
+  }
+});
+
+app.delete('/api/product/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const [result] = await connection.query(
+      'DELETE FROM product WHERE id = ?',
+      [id]
+    );
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ message: 'Product not found' });
+    }
+
+    res.json({ message: 'Product deleted successfully' });
+  } catch (err) {
+    res.status(500).json({ message: 'Delete failed', err });
+  }
 });
 
 
