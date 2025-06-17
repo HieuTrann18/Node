@@ -15,23 +15,23 @@
         <li><a  href="/create">Create user</a></li>
     </ul>
     <div class="form">
-        <form action="/create-user" method="POST">
+        <form action="/create-students" method="POST">
             <fieldset>
-                <legend>Update a user</legend>
+                <legend>Update a students</legend>
                 <div class="input-group">
                     <label>Email: </label>
-                    <input type="text" name="email" value="<%= userEdit.email %>">
+                    <input type="text" name="email" value="<%= students.email %>">
                 </div>
                 <div class="input-group">
                     <label>Name: </label>
-                    <input type="text" name="myname" value="<%= userEdit.name %>">
+                    <input type="text" name="myname" value="<%= students.name %>">
                 </div>
                 <div class="input-group">
                     <label>City: </label>
-                    <input type="text" name="city" value="<%= userEdit.city %>">
+                    <input type="text" name="city" value="<%= students.city %>">
                 </div>
                 <div class="input-group">
-                    <button type="submit" class="submit-btn">Add User</button>
+                    <button type="submit" class="submit-btn">Add students</button>
                 </div>
             </fieldset>
         </form>
