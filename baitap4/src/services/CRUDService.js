@@ -11,8 +11,13 @@ const getStudentById = async (studentId) => {
     const student = results && results.length > 0 ? results[0] : {}
     return student
 }
-
+const addStudent = async (email, name, city) => {
+    let sql = 'INSERT INTO Students (email, name, city) VALUES (?, ?, ?)'
+    let [results, fields] = await connection.query(sql, [email, name, city])
+    return results
+}
 module.exports = {
     getAllStudents,
-    getStudentById
+    getStudentById,
+    addStudent
 }
